@@ -39,7 +39,7 @@ load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 # Having the deps in that file, helps the WORKSPACE file stay less
 # cluttered.  The library symbol go_dependencies is then added to
 # the envionment. The line below calls that function.
-# load("//:deps.bzl", "go_dependencies")
+load("//:deps.bzl", "go_dependencies")
 
 # The next comment line includes a macro that gazelle reads.
 # This macro tells Gazelle to look for repository rules in a macro in a .bzl file,
@@ -48,7 +48,7 @@ load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 # contains calls to various go_repository rules.
 
 # gazelle:repository_macro deps.bzl%go_dependencies
-# go_dependencies()
+go_dependencies()
 
 # go_rules_dependencies is a function that registers external dependencies
 # needed by the Go rules.
@@ -58,7 +58,7 @@ go_rules_dependencies()
 # The next rule installs the Go toolchains. The Go version is specified
 # using the version parameter. This rule will download the Go SDK.
 # https://github.com/bazelbuild/rules_go/blob/master/go/toolchains.rst#go_register_toolchains
-go_register_toolchains(version = "1.20.2")
+go_register_toolchains(version = "1.20.12")
 
 # The following call configured the gazelle dependencies, Go environment and Go SDK.
 gazelle_dependencies()
